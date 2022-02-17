@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Półki</title>
+</head>
+<body>
+    <h1>Lista dostępnych półek</h1>
+    <div>
+        {% if polki %}
+        <table class="magazyny" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Magazyn</td><td>Dział</td><td>Regał</td><td>Półka</td></tr>
+        {% for row in polki %}
+            <tr><td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak półek
+        </div>
+    {% endif %}
+    </div>
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Transakcje i przedmioty</title>
+</head>
+<body>
+    <h1>Przedmioty przypisane do transakcji</h1>
+    <div>
+        {% if przedtrans %}
+        <table class="dzialosoba" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Przedmiot</td><td>Data</td><td>Klient</td></tr>
+        {% for row in przedtrans %}
+            <tr><td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak przedmiotów w transakcjach.
+        </div>
+    {% endif %}
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

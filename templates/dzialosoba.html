@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Dział osoba</title>
+</head>
+<body>
+    <h1>Przypisz osobę do działu</h1>
+    <div>
+        <form method="POST">
+            {% if osoby %}
+            <p>Osoba:</p>
+            <select name="wybranaosoba" selected value="{{osoby[0][0]}}">
+                {% for row in osoby %}
+                    <option value="{{row[0]}}">{{row[1]}} {{row[2]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak osób. Dodaj osoby, by móc przypisać je do działu.
+            </div>
+            {% endif %}
+            {% if dzialy %}
+            <br/><p>Dział:</p>
+            <select name="wybranydzial" selected value="{{dzialy[0][0]}}">
+                {% for row in dzialy %}
+                    <option value="{{row[0]}}">{{row[0]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak działów w magazynie. Stwórz dzial, by móc dodać do niego półkę.
+            </div>
+            {% endif %}
+            <br/><br/>
+            <button type="submit">Wprowadź dane</button>
+            <br/><br/>
+        </form>
+        <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

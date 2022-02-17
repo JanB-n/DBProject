@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Działy i osoby</title>
+</head>
+<body>
+    <h1>Osoby i przypisane do nich działy</h1>
+    <div>
+        {% if dzialosoby %}
+        <table class="dzialosoba" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Imię</td><td>Nazwisko</td><td>Dzial</td></tr>
+        {% for row in dzialosoby %}
+            <tr><td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak osób przypisanych do działów
+        </div>
+    {% endif %}
+    </div>
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Przedmioty</title>
+</head>
+<body>
+    <h1>Lista dostępnych przedmiotów</h1>
+    <div>
+        {% if przedmioty %}
+        <table class="przedmioty" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Magazyn</td><td>Dział</td><td>Regał</td><td>Półka</td><td>Nazwa</td><td>Cena</td><td>Ilość</td></tr>
+        {% for row in przedmioty %}
+            <tr><td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[6]}}</td><td>{{row[5]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak przedmiotów
+        </div>
+    {% endif %}
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

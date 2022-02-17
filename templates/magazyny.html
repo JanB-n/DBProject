@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Magazyn</title>
+</head>
+<body>
+    <h1>Dostępne magazyny</h1>
+    <div>
+        {% if mags %}
+        <table class="magazyny" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Nazwa</td><td>Kraj</td><td>Miasto</td><td>Ulica</td><td>Numer</td><td>Kod</td></tr>
+        {% for row in mags %}
+            <tr><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak magazynów
+        </div>
+    {% endif %}
+    </div>
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+</body>
+</html>

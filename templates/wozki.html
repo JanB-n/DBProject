@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Wozki</title>
+</head>
+<body>
+    <h1>Dostępne wózki</h1>
+    <div>
+        {% if wozki %}
+        <table class="wozki" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Magazyn</td><td>Dział</td><td>Producent</td><td>Nośność</td></tr>
+        {% for row in wozki %}
+            <tr><td>{{row[0]}}</td><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak Klientów
+        </div>
+    {% endif %}
+    </div>
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    <br/><br/>
+</body>
+</html>

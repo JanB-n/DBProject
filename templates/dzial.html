@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Dział</title>
+</head>
+<body>
+    <h1>Stwórz dział</h1>
+    <div>
+        <form method="POST">
+            {% if mags %}
+            <select name="wybranymag" selected value="{{mags[0][0]}}">
+                {% for row in mags %}
+                    <option value="{{row[1]}}">{{row[1]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak magazynów. Stwórz magazyn, by móc dodać do niego dział.
+            </div>
+            {% endif %}
+            <p>Nazwa działu</p>
+            <input type = "text" name="nazwadzialu" required/>
+            <br/><br/>
+            <button type="submit">Wprowadź dane</button>
+            <br/><br/>
+        </form>
+        <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

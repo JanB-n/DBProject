@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Klienci</title>
+</head>
+<body>
+    <h1>Dodaj klienta</h1>
+    <div>
+        <form method="POST">
+            <p>Nazwa klienta</p>
+            <input type = "text" name="nazwa" required/><br/>
+            <p>NIP</p>
+            <input type = "text" name="nip" required/>
+            <p>REGON</p>
+            <input type = "text" name="regon" required/>
+            <p>Adres</p>
+            <input type = "text" name="adres" required/>
+            <p>Typ</p>
+            <input type = "text" name="typ" required/>
+            <p>Numer telefonu</p>
+            <input type = "number" name="telefon" required/>
+            <br/><br/>
+            <button type="submit">Wprowadź dane</button>
+            <br/><br/>
+        </form>
+        <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

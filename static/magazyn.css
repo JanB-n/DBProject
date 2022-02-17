@@ -1,0 +1,13 @@
+table, td, th {
+    border: 1px solid;
+}
+
+
+.lewy{
+    display: inline-block;
+    margin-right: 50px;
+}
+
+.prawy{
+    display: inline-block;
+}

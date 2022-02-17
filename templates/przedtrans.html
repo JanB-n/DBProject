@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Przedmiot transakcji</title>
+</head>
+<body>
+    <h1>Dodaj przedmiot do transakcji</h1>
+    <div>
+        <form method="POST">
+            {% if przedmioty %}
+            <p>Przedmiot:</p>
+            <select name="wybranyprzedmiot" selected value="{{przedmioty[0][0]}}">
+                {% for row in przedmioty %}
+                    <option value="{{row[0]}}">{{row[2]}}</option>
+                {% endfor %}
+            </select>
+            <p>Ilość</p>
+            <input type = "number" name="ilosc" required/>
+            {% else %}
+            <div>
+                Brak przedmiotów. Dodaj przedmioty, by móc przypisać je do transakcji.
+            </div>
+            {% endif %}
+            {% if transakcje %}
+            <br/><p>Transakcja:</p>
+            <select name="wybranatransakcja" selected value="{{transakcje[0][0]}}">
+                {% for row in transakcje %}
+                    <option value="{{row[0]}}">{{row[2]}} {{klienci[row[1]]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak transakcji. Dodaj transakcję, by móc przypisać do niej przedmiot.
+            </div>
+            {% endif %}
+            <br/><br/>
+            {% if zaduzo %}
+            <div>
+                Niedostateczna ilość sztuk przedmiotu. Proszę podać mniejszą ilość.
+            </div>
+            <br/>
+            {% endif %}
+            <button type="submit">Wprowadź dane</button>
+            <br/><br/>
+        </form>
+        <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

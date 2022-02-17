@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Przedmiot</title>
+</head>
+<body>
+    <h1>Dodaj przedmiot</h1>
+    <div>
+        <form method="POST">
+            {% if mags %}
+            <select name="wybranymag" selected value="{{mags[0][0]}}">
+                {% for row in mags %}
+                    <option value="{{row[1]}}">{{row[1]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak magazynów. Stwórz magazyn, by móc dodać do niego dział.
+            </div>
+            {% endif %}
+            {% if dzialy %}
+            <select name="wybranydzial" selected value="{{dzialy[0][0]}}">
+                {% for row in dzialy %}
+                    <option value="{{row[0]}}">{{row[0]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak działów w magazynie. Stwórz dzial, by móc dodać do niego półkę.
+            </div>
+            {% endif %}
+            {% if polki %}
+            <p style="display: inline;">Regał:</p>
+            <select  name="wybranyregal" selected value="Wybierz regał">
+                {% for row in polki %}
+                    <option value="{{row[2]}}">{{row[2]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak półek w działach. Stwórz półki, by móc dodać na nie przedmioty.
+            </div>
+            {% endif %}
+            {% if polki %}
+            <p style="display:inline;">Półka:</p>
+            <select name="wybranapolka" selected value="Wybierz półkę">
+                {% for row in polki %}
+                    <option value="{{row[3]}}">{{row[3]}}</option>
+                {% endfor %}
+            </select>
+            {% else %}
+            <div>
+                Brak półek w działach. Stwórz półki, by móc dodać na nie przedmioty.
+            </div>
+            {% endif %}
+            <p>Nazwa</p>
+            <input type = "text" name="nazwa" required/> </br>
+            <p>Cena</p>
+            <input type = "number" step="0.01" name="cena" required/>
+            <p>Ilość</p>
+            <input type = "number" name="ilosc" required/>
+            <br/><br/>
+            <button type="submit">Wprowadź dane</button>
+            <br/><br/>
+        </form>
+        <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <link rel="shortcut icon" href="#" />
+    <title>Pracownicy</title>
+</head>
+<body>
+    <h1>Wszyscy pracownicy</h1>
+    <div>
+        
+        {% if mags %}
+        <p>ROLE:</p>
+        <p>0 - brak roli</p>
+        <p>1 - Stażysta</p>
+        <p>2 - Szeregowy pracownik</p>
+        <p>3 - Kierownik</p>
+        {% for key in mags %}
+            <table class="dzialy" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>{{key}}:</td></tr>
+            <tr style="background-color:rgb(216, 132, 132)"><td>Rola</td><td>Imię</td><td>Nazwisko</td></tr>
+            {% for i in mags[key] %}
+                {% for j in pracownicy %}
+                    {% if i == j[1] %}
+                    <tr><td>{{j[2]}}</td><td>{{j[3]}}</td><td>{{j[4]}}</td></tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            <tr style="background-color:rgb(157, 223, 157)"><td>Ilość pracowników w magazynie: {{ilosc[key]}}</td></tr>
+            <br/>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak Pacowników
+        </div>
+    {% endif %}
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    </div>
+</body>
+</html>

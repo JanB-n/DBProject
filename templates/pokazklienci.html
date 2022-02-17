@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='magazyn.css')}}">
+    <title>Klienci</title>
+</head>
+<body>
+    <h1>Lista klientów</h1>
+    <div>
+        {% if klienci %}
+        <table class="klienci" >
+            <tr style="background-color:rgb(235, 235, 172)"><td>Nazwa</td><td>NIP</td><td>REGON</td><td>Adres</td><td>Typ</td><td>Numer telefonu</td></tr>
+        {% for row in klienci %}
+            <tr><td>{{row[1]}}</td><td>{{row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <div >
+            Brak Klientów
+        </div>
+    {% endif %}
+    <br/>
+    <button onclick="window.location.href='http://127.0.0.1:5000/';">Wróć do serwisu</button>
+    <br/><br/>
+    </div>
+</body>
+</html>
